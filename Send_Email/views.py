@@ -22,11 +22,10 @@ def Send(request):
     mail = None
     try:
         subform = EmailForm(request.POST)
-
         if subform.is_valid():
             sub_mes = Email_Model(sub=request.POST['subject'], mes=request.POST['message'])
-            sent = users(from_mail=request.POST['from_mail'], to_mail=request.POST['to_mail'])
             sub_mes.save()
+            sent = users(from_mail=request.POST['from_mail'], to_mail=request.POST['to_mail'])
             sent.save()
     except:
         raise EnvironmentError('Invalid Form')
