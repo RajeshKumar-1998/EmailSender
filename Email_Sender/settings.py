@@ -23,7 +23,7 @@ TEMP_DIR = os.path.join(BASE_DIR, 'templates')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = ')rqmn_yvet_6dn#cc%@9=lz)w^j0qno2rwu(0ar1eanis1(#1y'
 
-    # SECURITY WARNING: don't run with debug turned on in production!
+# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']

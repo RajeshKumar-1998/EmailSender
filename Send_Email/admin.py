@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Email_Model,users
+from .models import EmailModel,Users
 # Register your models here.
 
-admin.site.register(Email_Model)
-admin.site.register(users)
+admin.site.register(EmailModel)
+admin.site.register(Users)
