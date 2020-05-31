@@ -5,7 +5,7 @@ from django.db import models
 
 class Email_Model(models.Model):
     sub = models.CharField(max_length=10000000,blank=False)
-    mes = models.CharField(max_length=10000000000000000,blank=False)
+    mes = models.CharField(blank=False)
 
     def __str__(self):
         return self.sub + self.mes
