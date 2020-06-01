@@ -16,10 +16,8 @@ def index(request):
 
 @require_POST
 def Send(request):
-    mails = None
+    global mails
     upload_file = None
-    file = None
-    mail = 0
     try:
         subform = EmailForm(request.POST)
         if subform.is_valid():
@@ -43,6 +41,7 @@ def Send(request):
             mail = EmailMessage(sub, mes, frommail, [tomail])
             mail.attach(upload_file.name, upload_file.read(), upload_file.content_type)
             mail.send()
+            mails = mail.send()
 
     except:
         if upload_file is None:
@@ -54,8 +53,8 @@ def Send(request):
             tomail = sent_add[2]
             mail = EmailMessage(sub, mes, frommail, [tomail])
             mail.send()
-            
-    mails = mail.send()
+            mails = mail.send()
+
     if mails == 1:
         return redirect('result')
     else:
