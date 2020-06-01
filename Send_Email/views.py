@@ -16,7 +16,7 @@ def index(request):
 
 @require_POST
 def Send(request):
-    global mails
+    mails = None
     upload_file = None
     try:
         subform = EmailForm(request.POST)
