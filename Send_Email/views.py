@@ -31,7 +31,7 @@ def Send(request):
         raise EnvironmentError('Invalid Form')
     try:
         if request.method == 'POST':
-            upload_file = request.FILES['document']
+            upload_file = request.FILES.get('document',False)
             fs = FileSystemStorage()
             file = fs.save(upload_file.name, upload_file.file)
             sub_mes = EmailModel.objects.values_list().last()
