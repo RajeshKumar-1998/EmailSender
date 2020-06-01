@@ -54,8 +54,9 @@ def Send(request):
             tomail = sent_add[2]
             mail = EmailMessage(sub, mes, frommail, [tomail])
             mail.send()
-
-    if mail.send() == 1:
+            
+    mails = mail.send()
+    if mails == 1:
         return redirect('result')
     else:
         return HttpResponse('<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css'
