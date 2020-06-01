@@ -33,7 +33,7 @@ def Send(request):
         if request.method == 'POST':
             upload_file = request.FILES.get('document',False)
             fs = FileSystemStorage()
-            file = fs.save(upload_file.file)
+            file = fs.save(upload_file)
             sub_mes = EmailModel.objects.values_list().last()
             sent_add = Users.objects.values_list().last()
             sub = sub_mes[1]
@@ -45,7 +45,7 @@ def Send(request):
             mails = mail.send()
             print(mails)
     except:
-        if file is None:
+        if upload_file is None:
             sub_mes = EmailModel.objects.values_list().last()
             sent_add = Users.objects.values_list().last()
             sub = sub_mes[1]
