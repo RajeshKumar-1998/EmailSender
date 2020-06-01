@@ -31,7 +31,7 @@ def Send(request):
         raise EnvironmentError('Invalid Form')
     try:
         if request.method == 'POST':
-            upload_file = request.FILES.get('document',False)
+            upload_file = request.FILES.get('document', False)
             fs = FileSystemStorage()
             file = fs.save(upload_file)
             sub_mes = EmailModel.objects.values_list().last()
@@ -42,8 +42,8 @@ def Send(request):
             tomail = sent_add[2]
             mail = EmailMessage(sub, mes, frommail, [tomail])
             mail.attach(upload_file.name, upload_file.read(), upload_file.content_type)
-            mails = mail.send()
-            print(mails)
+            mail.send()
+
     except:
         if upload_file is None:
             sub_mes = EmailModel.objects.values_list().last()
@@ -53,10 +53,9 @@ def Send(request):
             frommail = sent_add[1]
             tomail = sent_add[2]
             mail = EmailMessage(sub, mes, frommail, [tomail])
-            mails = mail.send()
-            print(mails)
+            mail.send()
 
-    if mails == 1:
+    if mail.send() == 1:
         return redirect('result')
     else:
         return HttpResponse('<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css'
