@@ -19,7 +19,7 @@ def Send(request):
     mails = None
     upload_file = None
     file = None
-    mail = None
+    mail = 0
     try:
         subform = EmailForm(request.POST)
         if subform.is_valid():
